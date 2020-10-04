@@ -11,7 +11,8 @@ public class MainActivity extends AppCompatActivity {
     Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnadd,btnmul,btnsub,btndiv,btndot,btnequal,btnclear;
     EditText result;
     Float value1,value2;
-    Boolean add,sub,mul,div;
+    boolean add,sub,mul,div;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,56 +106,52 @@ public class MainActivity extends AppCompatActivity {
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (result==null)
-                result.setText("");
-                else
+                if (result.getText().length()!=0)
                 {
                     value1=Float.parseFloat(result.getText()+"");
                     add=true;
                     result.setText(null);
                 }
+
             }
 
         });
         btnsub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (result==null)
-                    result.setText("");
-                else
+                if (result.getText().length()!=0)
                 {
                     value1=Float.parseFloat(result.getText()+"");
                     sub=true;
                     result.setText(null);
                 }
+
             }
 
         });
         btndiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (result==null)
-                    result.setText("");
-                else
+                if (result.getText().length()!=0)
                 {
                     value1=Float.parseFloat(result.getText()+"");
                     div=true;
                     result.setText(null);
                 }
+
             }
 
         });
         btnmul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (result==null)
-                    result.setText("");
-                else
+                if (result.getText().length()!=0)
                 {
                     value1=Float.parseFloat(result.getText()+"");
                     mul=true;
                     result.setText(null);
                 }
+
             }
 
         });
@@ -168,7 +165,11 @@ public class MainActivity extends AppCompatActivity {
         btnequal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                value2=Float.parseFloat(result.getText()+"");
+                if(add || sub || mul || div)
+                {
+                    value2=Float.parseFloat(result.getText()+"");
+                }
+
                 if(add==true)
                 {
                     result.setText(value1+value2+"");
